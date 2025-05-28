@@ -41,7 +41,7 @@
 <body>
   <header>
     <img src="logo.png" alt="Tuana Sitesi Logosu" class="logo">
-    <h1>Tuana Sitesi</h1>
+    <h1>Tuana Park Rezidans Evleri Sitesi</h1>
     <p>Resmi Bilgilendirme Sayfası</p>
   </header>
   <nav>
@@ -64,7 +64,7 @@
         <div style="text-align: center;">
           <h3>Saat</h3>
 
-          <!-- Saat alanı -->
+         <div style="display: flex; gap: 20px; flex-wrap: wrap;"> 
 <div id="saat-kutu">
   <span id="saat"></span>
 </div>
@@ -103,16 +103,64 @@
   saatGuncelle();
 </script>
 
-          
-          </div>
-        <div style="text-align: center;">
-          <h3>Muğla Menteşe Hava Durumu</h3>
-          <a href="https://www.mgm.gov.tr/tahmin/il-ve-ilceler.aspx?il=Muğla" target="_blank">
-            <img src="https://www.mgm.gov.tr/sunum/tahmin-ikon/40180.png" alt="Muğla Hava Durumu" style="width:120px; border-radius: 8px;">
-          </a>
-          <p style="font-size: 0.9rem; margin-top: 0.5rem;">Resmî meteoroloji tahmini için görsele tıklayın</p>
-        </div>
-      </div>
+          <!-- Hava durumu kutusu -->
+<div id="hava-kutu">
+  <span id="hava">Hava durumu yükleniyor...</span>
+</div>
+
+<style>
+  #hava-kutu {
+    background: #1e293b;
+    color: #ffffff;
+    padding: 10px 20px;
+    display: inline-block;
+    font-family: 'Courier New', monospace;
+    font-size: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    margin: 1rem auto;
+  }
+
+  @media (max-width: 600px) {
+    #hava-kutu {
+      font-size: 16px;
+      padding: 8px 16px;
+    }
+  }
+</style>
+
+<script>
+  // Open-Meteo üzerinden çekiyoruz (ücretsiz, kayıt gerekmez)
+  fetch("https://api.open-meteo.com/v1/forecast?latitude=37.2161&longitude=28.3665&current_weather=true")
+    .then(response => response.json())
+    .then(data => {
+      const derece = data.current_weather.temperature;
+      const ruzgar = data.current_weather.windspeed;
+      const durum = data.current_weather.weathercode;
+
+      const yorum = {
+        0: "Güneşli",
+        1: "Parçalı Bulutlu",
+        2: "Bulutlu",
+        3: "Kapalı",
+        45: "Sisli",
+        51: "Çisenti",
+        61: "Yağmurlu",
+        71: "Karlı",
+        95: "Fırtına"
+      };
+
+      const metin = `Menteşe: ${derece}°C – ${yorum[durum] || 'Durum Bilinmiyor'}`;
+      document.getElementById("hava").textContent = metin;
+    })
+    .catch(() => {
+      document.getElementById("hava").textContent = "Hava durumu alınamadı.";
+    });
+</script>
+
+
+           
+      
       <div style="background-color: #fef6e4; padding: 1rem; margin-top: 1rem; border-left: 4px solid #fbbf24; border-radius: 8px;">
         <h3>🌞 Yaz Temizliği Başladı!</h3>
         <p>5–6 Haziran tarihlerinde blok çevresi, otopark ve ortak alanlarda yaz temizliği yapılacaktır. Lütfen balkon altlarındaki kişisel eşyaların kaldırılmasına özen gösteriniz. Anlayışınız için teşekkür ederiz.</p>

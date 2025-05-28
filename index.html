@@ -4,6 +4,67 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tuana Sitesi</title>
+
+  <style>
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.gallery img {
+  width: 150px;
+  height: auto;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0; top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  text-align: center;
+  padding-top: 60px;
+}
+.lightbox img {
+  max-width: 90%;
+  max-height: 80vh;
+}
+.close {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+}
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  font-size: 40px;
+  color: white;
+  padding: 10px;
+  transform: translateY(-50%);
+}
+.prev { left: 30px; }
+.next { right: 30px; }
+
+.galeri-baslik {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+</style>
+
   <style>
     body { font-family: sans-serif; margin: 0; padding: 0; background: #f4f4f4; }
     header, footer { background-color: #004466; color: white; text-align: center; padding: 1rem; }
@@ -269,30 +330,31 @@
   <!-- Küpeşte Bakımı -->
   <div class="galeri-baslik">Küpeşte Bakımı</div>
   <div class="gallery">
-    <img src="kupeste-bakim1.jpeg" alt="Küpeşte 1" onclick="openLightbox();currentSlide(1)">
-    <img src="kupeste-bakim2.jpeg" alt="Küpeşte 2" onclick="openLightbox();currentSlide(2)">
-    <img src="kupeste-bakim3.jpeg" alt="Küpeşte 3" onclick="openLightbox();currentSlide(3)">
-    <img src="kupeste-bakim4.jpeg" alt="Küpeşte 4" onclick="openLightbox();currentSlide(4)">
-    <img src="kupeste-bakim5.jpeg" alt="Küpeşte 5" onclick="openLightbox();currentSlide(5)">
-    <img src="kupeste-bakim6.jpeg" alt="Küpeşte 6" onclick="openLightbox();currentSlide(6)">
+    <img src="kupeste-bakim1.jpeg" onclick="openLightbox();currentSlide(1)">
+    <img src="kupeste-bakim2.jpeg" onclick="openLightbox();currentSlide(2)">
+    <img src="kupeste-bakim3.jpeg" onclick="openLightbox();currentSlide(3)">
+    <img src="kupeste-bakim4.jpeg" onclick="openLightbox();currentSlide(4)">
+    <img src="kupeste-bakim5.jpeg" onclick="openLightbox();currentSlide(5)">
+    <img src="kupeste-bakim6.jpeg" onclick="openLightbox();currentSlide(6)">
   </div>
 
   <!-- Ortak Alan Boya Çalışması -->
   <div class="galeri-baslik">Ortak Alan Boya Çalışması</div>
   <div class="gallery">
-    <img src="boya1.jpeg" alt="Boya 1" onclick="openLightbox();currentSlide(7)">
-    <img src="boya2.jpeg" alt="Boya 2" onclick="openLightbox();currentSlide(8)">
-    <img src="boya3.jpeg" alt="Boya 3" onclick="openLightbox();currentSlide(9)">
+    <img src="boya1.jpeg" onclick="openLightbox();currentSlide(7)">
+    <img src="boya2.jpeg" onclick="openLightbox();currentSlide(8)">
+    <img src="boya3.jpeg" onclick="openLightbox();currentSlide(9)">
   </div>
 
   <!-- Asansör Çalışması -->
   <div class="galeri-baslik">Asansör Çalışması</div>
   <div class="gallery">
-    <img src="asansor1.jpeg" alt="Asansör 1" onclick="openLightbox();currentSlide(10)">
-    <img src="asansor2.jpeg" alt="Asansör 2" onclick="openLightbox();currentSlide(11)">
-    <img src="asansor3.jpeg" alt="Asansör 3" onclick="openLightbox();currentSlide(12)">
+    <img src="asansor1.jpeg" onclick="openLightbox();currentSlide(10)">
+    <img src="asansor2.jpeg" onclick="openLightbox();currentSlide(11)">
+    <img src="asansor3.jpeg" onclick="openLightbox();currentSlide(12)">
   </div>
 </section>
+
 
 <script>
 let currentIndex = 1;
@@ -432,7 +494,15 @@ function showSlide(n) {
 </div>
 
   
+<!-- Lightbox kutusu -->
+<div id="lightbox" class="lightbox">
+  <span class="close" onclick="closeLightbox()">✖</span>
+  <a class="prev" onclick="changeSlide(-1)">❮</a>
+  <img id="lightbox-img" src="">
+  <a class="next" onclick="changeSlide(1)">❯</a>
+</div>
 
+           
   </main>
   <button onclick="scrollToTop()" id="toTopBtn" title="Yukarı çık">⬆️ Ana Sayfa</button>
   <footer>
@@ -451,5 +521,42 @@ function showSlide(n) {
       window.scrollTo({top: 0, behavior: 'smooth'});
     }
   </script>
-</body>
+
+<script>
+let currentIndex = 1;
+const images = [
+  "kupeste-bakim1.jpeg", "kupeste-bakim2.jpeg", "kupeste-bakim3.jpeg",
+  "kupeste-bakim4.jpeg", "kupeste-bakim5.jpeg", "kupeste-bakim6.jpeg",
+  "boya1.jpeg", "boya2.jpeg", "boya3.jpeg",
+  "asansor1.jpeg", "asansor2.jpeg", "asansor3.jpeg"
+];
+
+function openLightbox() {
+  document.getElementById("lightbox").style.display = "block";
+}
+
+function closeLightbox() {
+  document.getElementById("lightbox").style.display = "none";
+}
+
+function currentSlide(n) {
+  currentIndex = n;
+  showSlide(n);
+}
+
+function changeSlide(n) {
+  currentIndex += n;
+  if (currentIndex < 1) currentIndex = images.length;
+  if (currentIndex > images.length) currentIndex = 1;
+  showSlide(currentIndex);
+}
+
+function showSlide(n) {
+  const img = document.getElementById("lightbox-img");
+  img.src = images[n - 1];
+}
+</script>
+
+           
+  </body>
 </html>

@@ -1,36 +1,51 @@
 <!DOCTYPE html>
 <html lang="tr">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tuana Sitesi</title>
   <style>
-   #toTopBtn {
-  display: none;
-  position: fixed;
-  bottom: 30px;
-  right: 20px;
-  z-index: 99;
-  font-size: 16px;
-  border: none;
-  outline: none;
-  background-color: #004466;
-  color: white;
-  cursor: pointer;
-  padding: 10px 15px;
-  border-radius: 8px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.2);
-}
-#toTopBtn:hover {
-  background-color: #006699;
-}
+    body { font-family: sans-serif; margin: 0; padding: 0; background: #f4f4f4; }
+    header, footer { background-color: #004466; color: white; text-align: center; padding: 1rem; }
+    nav { background: #eee; padding: 0.5rem; text-align: center; }
+    nav a { margin: 0 10px; text-decoration: none; color: #004466; font-weight: bold; }
+    main { padding: 1rem; }
+    section { margin-bottom: 2rem; background: white; padding: 1rem; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+    img.logo { max-width: 120px; margin-bottom: 1rem; }
+
+    #toTopBtn {
+      display: none;
+      position: fixed;
+      bottom: 30px;
+      right: 20px;
+      z-index: 99;
+      font-size: 16px;
+      border: none;
+      outline: none;
+      background-color: #004466;
+      color: white;
+      cursor: pointer;
+      padding: 10px 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    }
+    #toTopBtn:hover {
+      background-color: #006699;
+    }
+
+    @media (max-width: 600px) {
+      nav { font-size: 0.9rem; }
+    }
   </style>
 </head>
 <body>
+
   <header>
     <img src="logo.png" alt="Tuana Sitesi Logosu" class="logo">
     <h1>Tuana Sitesi</h1>
     <p>Resmi Bilgilendirme Sayfası</p>
   </header>
+
   <nav>
     <a href="#anasayfa">Ana Sayfa</a>
     <a href="#hakkimizda">Hakkımızda</a>
@@ -40,107 +55,60 @@
     <a href="#odeme">Ödeme Bilgisi</a>
     <a href="#galeri">Galeri</a>
   </nav>
+
   <main>
     <section id="anasayfa">
       <img src="banner.jpg" alt="Tuana Sitesi Genel Görünüm" style="width: 100%; border-radius: 8px; margin-bottom: 1rem;">
-  <h2>Tuana Sitesi'ne Hoş Geldiniz</h2>
-  <p><strong>Tuana Park Rezidans Evleri</strong>, doğa ile iç içe, konforlu yaşam alanları sunan modern bir yaşam merkezidir. A, B ve C bloklardan oluşan sitemiz, toplam 90 daireden oluşmakta ve sakinlerine huzurlu bir çevre sunmaktadır.</p>
-<div style="display: flex; gap: 2rem; flex-wrap: wrap; margin-top: 1rem;">
-  <div>
-    <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 1rem; align-items: center;">
+      <h2>Tuana Sitesi'ne Hoş Geldiniz</h2>
+      <p><strong>Tuana Park Rezidans Evleri</strong>, doğa ile iç içe, konforlu yaşam alanları sunan modern bir yaşam merkezidir. A, B ve C bloklardan oluşan sitemiz, toplam 90 daireden oluşmakta ve sakinlerine huzurlu bir çevre sunmaktadır.</p>
 
-  <div style="text-align: center;">
-    <h3>Saat</h3>
-    <iframe src="https://free.timeanddate.com/clock/i9qn7q0a/n463/szw160/szh160/hocfff/hbw0/hfc000/cf100/hgr0/fav0/fiv0/mqc000/mqs3/mql6/mqw4/mqd80/mhc000/mhs3/mhl6/mhw4/mhd80/mmc000/mml4/mmw1/mmd80" frameborder="0" width="160" height="160"></iframe>
-  </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 1rem; align-items: center;">
+        <div style="text-align: center;">
+          <h3>Saat</h3>
+          <iframe src="https://free.timeanddate.com/clock/i9qn7q0a/n463/szw160/szh160/hocfff/hbw0/hfc000/cf100/hgr0/fav0/fiv0/mqc000/mqs3/mql6/mqw4/mqd80/mhc000/mhs3/mhl6/mhw4/mhd80/mmc000/mml4/mmw1/mmd80" frameborder="0" width="160" height="160"></iframe>
+        </div>
+        <div style="text-align: center;">
+          <h3>Muğla Menteşe Hava Durumu</h3>
+          <a href="https://www.mgm.gov.tr/tahmin/il-ve-ilceler.aspx?il=Muğla" target="_blank">
+            <img src="https://www.mgm.gov.tr/sunum/tahmin-ikon/40180.png" alt="Muğla Hava Durumu" style="width:120px; border-radius: 8px;">
+          </a>
+          <p style="font-size: 0.9rem; margin-top: 0.5rem;">Resmî meteoroloji tahmini için görsele tıklayın</p>
+        </div>
+      </div>
 
-  <div style="text-align: center;">
-    <h3>Muğla Menteşe Hava Durumu</h3>
-    <a href="https://www.mgm.gov.tr/tahmin/il-ve-ilceler.aspx?il=Muğla" target="_blank">
-      <img src="https://www.mgm.gov.tr/sunum/tahmin-ikon/40180.png" alt="Muğla Hava Durumu" style="width:120px; border-radius: 8px;">
-    </a>
-    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Resmî meteoroloji tahmini için görsele tıklayın</p>
-  </div>
+      <div style="background-color: #fef6e4; padding: 1rem; margin-top: 1rem; border-left: 4px solid #fbbf24; border-radius: 8px;">
+        <h3>🌞 Yaz Temizliği Başladı!</h3>
+        <p>5–6 Haziran tarihlerinde blok çevresi, otopark ve ortak alanlarda yaz temizliği yapılacaktır. Lütfen balkon altlarındaki kişisel eşyaların kaldırılmasına özen gösteriniz. Anlayışınız için teşekkür ederiz.</p>
+      </div>
 
-</div>
-<div style="background-color: #fef6e4; padding: 1rem; margin-top: 1rem; border-left: 4px solid #fbbf24; border-radius: 8px;">
-  <h3>🌞 Yaz Temizliği Başladı!</h3>
-  <p>5–6 Haziran tarihlerinde blok çevresi, otopark ve ortak alanlarda yaz temizliği yapılacaktır. Lütfen balkon altlarındaki kişisel eşyaların kaldırılmasına özen gösteriniz. Anlayışınız için teşekkür ederiz.</p>
-</div>
-
-  <ul>
-    <li>🛗 Asansörlü, modern yapılar</li>
-    <li>🅿️ Her daireye özel otopark</li>
-    <li>🌿 Peyzajlı bahçeler ve yeşil alanlar</li>
-    <li>🛡️ 7/24 güvenlik ve kamera sistemi</li>
-    <li>🧹 Temizlik, bakım ve çevre düzenleme hizmetleri</li>
-  </ul>
-
-  <p>Sitemizle ilgili en güncel bilgilere bu sayfa üzerinden ulaşabilirsiniz. Duyurular, faaliyet raporları ve yönetimle ilgili bilgileri düzenli olarak burada paylaşacağız.</p>
-</section>
-    <section id="yonetim">
-  <h2>Yönetim ve İletişim</h2>
-  <ul>
-    <li><strong>Atilla ÖZKAN</strong> – Site Yönetim Kurulu Başkanı</li>
-    <li><strong>Eymen GÜREL</strong> – Başkan Yardımcısı</li>
-    <li><strong>Atılgan ERÖZKAN</strong> – Başkan Yardımcısı</li>
-  </ul>
-  <p>Telefon / WhatsApp: <a href="tel:+905551112233">+90 555 111 2233</a></p>
-</section>
-    <section id="duyurular">
-  <h2>Duyurular</h2>
-  <ul>
-    <li>B Blok asansör yapımı tamamlandı. (Mayıs 2025)</li>
-    <li>Merdiven boşluğu boyama çalışmaları devam ediyor.</li>
-    <li>Haziran ayında olağanüstü genel kurul yapılacaktır.</li>
-    <li><strong>C Blok</strong> merdiven korkulukları yenilenecek – <em>Haziran 2025</em></li>
-    <li><strong>Aidat</strong> ödemeleri için son tarih: <em>10 Haziran 2025</em></li>
-    <li><strong>Otopark</strong> alanları numaralandırılacaktır</li>
-    <li><strong>Genel temizlik</strong>: 5–6 Haziran 2025 tarihlerinde yapılacaktır</li>
-  </ul>
-</section>
-    <section id="raporlar">
-      <h2>Faaliyet Raporları</h2>
-      <p><a href="faaliyet_raporu_nisan2025.pdf" download>Nisan 2025 Faaliyet Raporu (PDF)</a></p>
-      <p><a href="faaliyet_raporu_subat2025.pdf" download>Şubat 2025 Faaliyet Raporu (PDF)</a></p>
-      <p><a href="faaliyet_raporu_mart2025.pdf" download>Mart 2025 Faaliyet Raporu (PDF)</a></p>
+      <ul>
+        <li>🛗 Asansörlü, modern yapılar</li>
+        <li>🅿️ Her daireye özel otopark</li>
+        <li>🌿 Peyzajlı bahçeler ve yeşil alanlar</li>
+        <li>🛡️ 7/24 güvenlik ve kamera sistemi</li>
+        <li>🧹 Temizlik, bakım ve çevre düzenleme hizmetleri</li>
+      </ul>
+      <p>Sitemizle ilgili en güncel bilgilere bu sayfa üzerinden ulaşabilirsiniz.</p>
     </section>
-    <section id="odeme">
-      <h2>Ödeme Bilgilendirme</h2>
-      <p>Aidat: 500 TL / ay</p>
-      <p>Katkı Payı: 2. Taksit son ödeme tarihi 20 Mayıs 2025</p>
-      <p>Banka Hesabı: Ziraat Bankası - IBAN: TR00 0000 0000 0000 0000 0000 00</p>
-    </section>
-    <section id="galeri">
-      <h2>Fotoğraf Galerisi</h2>
-      <h2>Fotoğraf Galerisi - Küpeşte Bakım Öncesi</h2>
-<img src="kupeste-bakim1.jpeg" alt="Küpeşte bakım öncesi 1" style="max-width:100%; margin-bottom:10px;">
-<img src="kupeste-bakim2.jpeg" alt="Küpeşte bakım öncesi 2" style="max-width:100%; margin-bottom:10px;">
-<img src="kupeste-bakim3.jpeg" alt="Küpeşte bakım öncesi 3" style="max-width:100%; margin-bottom:10px;">
-<img src="kupeste-bakim4.jpeg" alt="Küpeşte bakım öncesi 4" style="max-width:100%; margin-bottom:10px;">
-<img src="kupeste-bakim5.jpeg" alt="Küpeşte bakım öncesi 5" style="max-width:100%; margin-bottom:10px;">
-<img src="kupeste-bakim6.jpeg" alt="Küpeşte bakım öncesi 6" style="max-width:100%; margin-bottom:10px;">
 
-      <img src="boya-oncesi.jpg" alt="Boya öncesi" style="max-width:100%; margin-bottom:10px;">
-      <img src="boya-sonrasi.jpg" alt="Boya sonrası" style="max-width:100%;">
-    </section>
+    <!-- Diğer bölümler burada yer alacak -->
   </main>
-    <button onclick="scrollToTop()" id="toTopBtn" title="Yukarı çık">⬆️ Ana Sayfa</button>
+
+  <!-- Yukarı Çık Butonu -->
+  <button onclick="scrollToTop()" id="toTopBtn" title="Yukarı çık">⬆️ Ana Sayfa</button>
+
   <footer>
     <p>&copy; 2025 Tuana Sitesi Yönetimi</p>
   </footer>
+
   <script>
-  window.onscroll = function() {
-    const btn = document.getElementById("toTopBtn");
-    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-      btn.style.display = "block";
-    } else {
-      btn.style.display = "none";
-    }
-  };
-  function scrollToTop() {
-    window.scrollTo({top: 0, behavior: 'smooth'});
-  }
-</script>
-</body>
-</html>
+    window.onscroll = function() {
+      const btn = document.getElementById("toTopBtn");
+      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        btn.style.display = "block";
+      } else {
+        btn.style.display = "none";
+      }
+    };
+    function scrollToTop() {
+      window.scrollTo({top: 0, behavi

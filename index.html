@@ -39,13 +39,11 @@
   </style>
 </head>
 <body>
-
   <header>
     <img src="logo.png" alt="Tuana Sitesi Logosu" class="logo">
     <h1>Tuana Sitesi</h1>
     <p>Resmi Bilgilendirme Sayfası</p>
   </header>
-
   <nav>
     <a href="#anasayfa">Ana Sayfa</a>
     <a href="#hakkimizda">Hakkımızda</a>
@@ -55,13 +53,11 @@
     <a href="#odeme">Ödeme Bilgisi</a>
     <a href="#galeri">Galeri</a>
   </nav>
-
   <main>
     <section id="anasayfa">
       <img src="banner.jpg" alt="Tuana Sitesi Genel Görünüm" style="width: 100%; border-radius: 8px; margin-bottom: 1rem;">
       <h2>Tuana Sitesi'ne Hoş Geldiniz</h2>
       <p><strong>Tuana Park Rezidans Evleri</strong>, doğa ile iç içe, konforlu yaşam alanları sunan modern bir yaşam merkezidir. A, B ve C bloklardan oluşan sitemiz, toplam 90 daireden oluşmakta ve sakinlerine huzurlu bir çevre sunmaktadır.</p>
-
       <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 1rem; align-items: center;">
         <div style="text-align: center;">
           <h3>Saat</h3>
@@ -75,12 +71,10 @@
           <p style="font-size: 0.9rem; margin-top: 0.5rem;">Resmî meteoroloji tahmini için görsele tıklayın</p>
         </div>
       </div>
-
       <div style="background-color: #fef6e4; padding: 1rem; margin-top: 1rem; border-left: 4px solid #fbbf24; border-radius: 8px;">
         <h3>🌞 Yaz Temizliği Başladı!</h3>
         <p>5–6 Haziran tarihlerinde blok çevresi, otopark ve ortak alanlarda yaz temizliği yapılacaktır. Lütfen balkon altlarındaki kişisel eşyaların kaldırılmasına özen gösteriniz. Anlayışınız için teşekkür ederiz.</p>
       </div>
-
       <ul>
         <li>🛗 Asansörlü, modern yapılar</li>
         <li>🅿️ Her daireye özel otopark</li>
@@ -90,17 +84,11 @@
       </ul>
       <p>Sitemizle ilgili en güncel bilgilere bu sayfa üzerinden ulaşabilirsiniz.</p>
     </section>
-
-    <!-- Diğer bölümler burada yer alacak -->
   </main>
-
-  <!-- Yukarı Çık Butonu -->
   <button onclick="scrollToTop()" id="toTopBtn" title="Yukarı çık">⬆️ Ana Sayfa</button>
-
   <footer>
     <p>&copy; 2025 Tuana Sitesi Yönetimi</p>
   </footer>
-
   <script>
     window.onscroll = function() {
       const btn = document.getElementById("toTopBtn");
@@ -111,4 +99,8 @@
       }
     };
     function scrollToTop() {
-      window.scrollTo({top: 0, behavi
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+  </script>
+</body>
+</html>

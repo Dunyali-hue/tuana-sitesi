@@ -54,6 +54,8 @@
     <a href="#galeri">Galeri</a>
   </nav>
   <main>
+
+    
     <section id="anasayfa">
       <img src="banner.jpg" alt="Tuana Sitesi Genel Görünüm" style="width: 100%; border-radius: 8px; margin-bottom: 1rem;">
       <h2>Tuana Sitesi'ne Hoş Geldiniz</h2>
@@ -84,6 +86,7 @@
       </ul>
     </section>
 
+    
     <section id="hakkimizda">
       <h2>Hakkımızda</h2>
       <ul>
@@ -93,6 +96,8 @@
         <li>Yönetim ofisi C Blok -1 kat</li>
       </ul>
     </section>
+
+
     
     <section id="yonetim">
       <h2>Yönetim ve İletişim</h2>
@@ -104,6 +109,8 @@
       <p>Telefon / WhatsApp: <a href="tel:+905551112233">+90 555 111 2233</a></p>
     </section>
 
+
+    
     <section id="duyurular">
       <h2>Duyurular</h2>
       <ul>
@@ -117,6 +124,8 @@
       </ul>
     </section>
 
+
+    
     <section id="raporlar">
       <h2>Faaliyet Raporları</h2>
       <p>Tuana Sitesi’nin aylık faaliyet raporlarını bu bölümde inceleyebilirsiniz.</p>
@@ -128,6 +137,7 @@
       <p>Yeni raporlar her ayın ilk haftası bu sayfaya eklenecektir.</p>
     </section>
 
+    
     <section id="odeme">
      <h2>Ödeme Bilgisi</h2>
   <p>Tuana Sitesi sakinlerinin aidat ve katkı payı ödemelerini yapabilecekleri bilgiler aşağıda sunulmuştur.</p>
@@ -153,17 +163,90 @@
     </section>
 
 <section id="galeri">
-  <h2>Fotoğraf Galerisi</h2>
-  <p>Tadilat Öncesi – C Blok Küpeşte Bakımı Görselleri</p>
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px;">
-    <a href="kupeste-bakim1.jpeg" target="_blank"><img src="kupeste-bakim1.jpeg" alt="Küpeşte Bakım 1" style="width: 100%; border-radius: 6px;"></a>
-    <a href="kupeste-bakim2.jpeg" target="_blank"><img src="kupeste-bakim2.jpeg" alt="Küpeşte Bakım 2" style="width: 100%; border-radius: 6px;"></a>
-    <a href="kupeste-bakim3.jpeg" target="_blank"><img src="kupeste-bakim3.jpeg" alt="Küpeşte Bakım 3" style="width: 100%; border-radius: 6px;"></a>
-    <a href="kupeste-bakim4.jpeg" target="_blank"><img src="kupeste-bakim4.jpeg" alt="Küpeşte Bakım 4" style="width: 100%; border-radius: 6px;"></a>
-    <a href="kupeste-bakim5.jpeg" target="_blank"><img src="kupeste-bakim5.jpeg" alt="Küpeşte Bakım 5" style="width: 100%; border-radius: 6px;"></a>
-    <a href="kupeste-bakim6.jpeg" target="_blank"><img src="kupeste-bakim6.jpeg" alt="Küpeşte Bakım 6" style="width: 100%; border-radius: 6px;"></a>
-  </div>
-</section>
+<h3 style="margin-top: 3rem;">Tadilat Sonrası – C Blok Küpeşte Yenileme</h3>
+<style>
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 10px;
+  }
+  .gallery-grid img {
+    width: 100%;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .lightbox {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85);
+    justify-content: center;
+    align-items: center;
+  }
+  .lightbox img {
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 8px;
+  }
+  .lightbox:target {
+    display: flex;
+  }
+  .lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0 1rem;
+    user-select: none;
+  }
+  .lightbox-prev { left: 0; }
+  .lightbox-next { right: 0; }
+</style>
+
+<div class="gallery-grid">
+  <a href="#img7"><img src="kupeste-sonra1.jpeg" alt="Küpeşte Sonrası 1"></a>
+  <a href="#img8"><img src="kupeste-sonra2.jpeg" alt="Küpeşte Sonrası 2"></a>
+  <a href="#img9"><img src="kupeste-sonra3.jpeg" alt="Küpeşte Sonrası 3"></a>
+  <a href="#img10"><img src="kupeste-sonra4.jpeg" alt="Küpeşte Sonrası 4"></a>
+  <a href="#img11"><img src="kupeste-sonra5.jpeg" alt="Küpeşte Sonrası 5"></a>
+  <a href="#img12"><img src="kupeste-sonra6.jpeg" alt="Küpeşte Sonrası 6"></a>
+</div>
+
+<div id="img7" class="lightbox">
+  <a href="#img12" class="lightbox-nav lightbox-prev">❮</a>
+  <img src="kupeste-sonra1.jpeg">
+  <a href="#img8" class="lightbox-nav lightbox-next">❯</a>
+</div>
+<div id="img8" class="lightbox">
+  <a href="#img7" class="lightbox-nav lightbox-prev">❮</a>
+  <img src="kupeste-sonra2.jpeg">
+  <a href="#img9" class="lightbox-nav lightbox-next">❯</a>
+</div>
+<div id="img9" class="lightbox">
+  <a href="#img8" class="lightbox-nav lightbox-prev">❮</a>
+  <img src="kupeste-sonra3.jpeg">
+  <a href="#img10" class="lightbox-nav lightbox-next">❯</a>
+</div>
+<div id="img10" class="lightbox">
+  <a href="#img9" class="lightbox-nav lightbox-prev">❮</a>
+  <img src="kupeste-sonra4.jpeg">
+  <a href="#img11" class="lightbox-nav lightbox-next">❯</a>
+</div>
+<div id="img11" class="lightbox">
+  <a href="#img10" class="lightbox-nav lightbox-prev">❮</a>
+  <img src="kupeste-sonra5.jpeg">
+  <a href="#img12" class="lightbox-nav lightbox-next">❯</a>
+</div>
+<div id="img12" class="lightbox">
+  <a href="#img11" class="lightbox-nav lightbox-prev">❮</a>
+  <img src="kupeste-sonra6.jpeg">
+  <a href="#img7" class="lightbox-nav lightbox-next">❯</a>
+</div>
+
 
 
   </main>

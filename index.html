@@ -4,16 +4,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tuana Sitesi</title>
   <style>
-    body { font-family: sans-serif; margin: 0; padding: 0; background: #f4f4f4; }
-    header, footer { background-color: #004466; color: white; text-align: center; padding: 1rem; }
-    nav { background: #eee; padding: 0.5rem; text-align: center; }
-    nav a { margin: 0 10px; text-decoration: none; color: #004466; font-weight: bold; }
-    main { padding: 1rem; }
-    section { margin-bottom: 2rem; background: white; padding: 1rem; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
-    img.logo { max-width: 120px; margin-bottom: 1rem; }
-    @media (max-width: 600px) {
-      nav { font-size: 0.9rem; }
-    }
+   #toTopBtn {
+  display: none;
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+  z-index: 99;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  background-color: #004466;
+  color: white;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+#toTopBtn:hover {
+  background-color: #006699;
+}
   </style>
 </head>
 <body>
@@ -116,8 +125,22 @@
       <img src="boya-sonrasi.jpg" alt="Boya sonrası" style="max-width:100%;">
     </section>
   </main>
+    <button onclick="scrollToTop()" id="toTopBtn" title="Yukarı çık">⬆️ Ana Sayfa</button>
   <footer>
     <p>&copy; 2025 Tuana Sitesi Yönetimi</p>
   </footer>
+  <script>
+  window.onscroll = function() {
+    const btn = document.getElementById("toTopBtn");
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+      btn.style.display = "block";
+    } else {
+      btn.style.display = "none";
+    }
+  };
+  function scrollToTop() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+</script>
 </body>
 </html>

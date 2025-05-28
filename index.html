@@ -63,8 +63,48 @@
       <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 1rem; align-items: center;">
         <div style="text-align: center;">
           <h3>Saat</h3>
-          <iframe src="https://free.timeanddate.com/clock/i9qn7q0a/n463/szw160/szh160/hocfff/hbw0/hfc000/cf100/hgr0/fav0/fiv0/mqc000/mqs3/mql6/mqw4/mqd80/mhc000/mhs3/mhl6/mhw4/mhd80/mmc000/mml4/mmw1/mmd80" frameborder="0" width="160" height="160"></iframe>
-        </div>
+
+          <!-- Saat alanı -->
+<div id="saat-kutu">
+  <span id="saat"></span>
+</div>
+
+<style>
+  #saat-kutu {
+    background: #1e293b;
+    color: #ffffff;
+    padding: 10px 20px;
+    display: inline-block;
+    font-family: 'Courier New', monospace;
+    font-size: 22px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    margin: 1rem auto;
+  }
+
+  @media (max-width: 600px) {
+    #saat-kutu {
+      font-size: 18px;
+      padding: 8px 16px;
+    }
+  }
+</style>
+
+<script>
+  function saatGuncelle() {
+    const saatEl = document.getElementById("saat");
+    const simdi = new Date();
+    const saat = simdi.getHours().toString().padStart(2, '0');
+    const dakika = simdi.getMinutes().toString().padStart(2, '0');
+    const saniye = simdi.getSeconds().toString().padStart(2, '0');
+    saatEl.textContent = `${saat}:${dakika}:${saniye}`;
+  }
+  setInterval(saatGuncelle, 1000);
+  saatGuncelle();
+</script>
+
+          
+          </div>
         <div style="text-align: center;">
           <h3>Muğla Menteşe Hava Durumu</h3>
           <a href="https://www.mgm.gov.tr/tahmin/il-ve-ilceler.aspx?il=Muğla" target="_blank">
@@ -91,7 +131,7 @@
       <h2>Hakkımızda</h2>
       <ul>
         <li>3 Blok (A, B, C)</li>
-        <li>Toplam 90 daire</li>
+        <li>Toplam 40 daire</li>
         <li>Her daireye özel otopark alanı</li>
         <li>Yönetim ofisi C Blok -1 kat</li>
       </ul>

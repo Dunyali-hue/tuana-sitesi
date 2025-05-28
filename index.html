@@ -163,12 +163,14 @@
     </section>
 
 <section id="galeri">
-<h3 style="margin-top: 3rem;">Tadilat Sonrası – A, B ve C Blok Küpeşte Yenileme</h3>
+<h3 style="margin-top: 3rem;">Tadilat Sonrası – C Blok Küpeşte Yenileme</h3>
+
 <style>
   .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 10px;
+    margin-bottom: 2rem;
   }
   .gallery-grid img {
     width: 100%;
@@ -184,11 +186,13 @@
     background: rgba(0,0,0,0.85);
     justify-content: center;
     align-items: center;
+    flex-direction: column;
   }
   .lightbox img {
     max-width: 90%;
     max-height: 80vh;
     border-radius: 8px;
+    margin-top: 1rem;
   }
   .lightbox:target {
     display: flex;
@@ -202,50 +206,73 @@
     cursor: pointer;
     padding: 0 1rem;
     user-select: none;
+    z-index: 1001;
   }
   .lightbox-prev { left: 0; }
   .lightbox-next { right: 0; }
+  .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: white;
+    color: black;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    z-index: 1002;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+  }
 </style>
 
+<!-- Küçük görseller -->
 <div class="gallery-grid">
-  <a href="#img7"><img src="kupeste-sonra1.jpeg" alt="Küpeşte Sonrası 1"></a>
-  <a href="#img8"><img src="kupeste-sonra2.jpeg" alt="Küpeşte Sonrası 2"></a>
-  <a href="#img9"><img src="kupeste-sonra3.jpeg" alt="Küpeşte Sonrası 3"></a>
-  <a href="#img10"><img src="kupeste-sonra4.jpeg" alt="Küpeşte Sonrası 4"></a>
-  <a href="#img11"><img src="kupeste-sonra5.jpeg" alt="Küpeşte Sonrası 5"></a>
-  <a href="#img12"><img src="kupeste-sonra6.jpeg" alt="Küpeşte Sonrası 6"></a>
+  <a href="#img1"><img src="kupeste-sonra1.jpeg" alt="Küpeşte Sonrası 1"></a>
+  <a href="#img2"><img src="kupeste-sonra2.jpeg" alt="Küpeşte Sonrası 2"></a>
+  <a href="#img3"><img src="kupeste-sonra3.jpeg" alt="Küpeşte Sonrası 3"></a>
+  <a href="#img4"><img src="kupeste-sonra4.jpeg" alt="Küpeşte Sonrası 4"></a>
+  <a href="#img5"><img src="kupeste-sonra5.jpeg" alt="Küpeşte Sonrası 5"></a>
+  <a href="#img6"><img src="kupeste-sonra6.jpeg" alt="Küpeşte Sonrası 6"></a>
 </div>
 
-<div id="img7" class="lightbox">
-  <a href="#img12" class="lightbox-nav lightbox-prev">❮</a>
+<!-- Lightbox popup görselleri -->
+<div id="img1" class="lightbox">
+  <a href="#galeri" class="close-btn">✖ Kapat</a>
+  <a href="#img6" class="lightbox-nav lightbox-prev">❮</a>
   <img src="kupeste-sonra1.jpeg">
-  <a href="#img8" class="lightbox-nav lightbox-next">❯</a>
+  <a href="#img2" class="lightbox-nav lightbox-next">❯</a>
 </div>
-<div id="img8" class="lightbox">
-  <a href="#img7" class="lightbox-nav lightbox-prev">❮</a>
+<div id="img2" class="lightbox">
+  <a href="#galeri" class="close-btn">✖ Kapat</a>
+  <a href="#img1" class="lightbox-nav lightbox-prev">❮</a>
   <img src="kupeste-sonra2.jpeg">
-  <a href="#img9" class="lightbox-nav lightbox-next">❯</a>
+  <a href="#img3" class="lightbox-nav lightbox-next">❯</a>
 </div>
-<div id="img9" class="lightbox">
-  <a href="#img8" class="lightbox-nav lightbox-prev">❮</a>
+<div id="img3" class="lightbox">
+  <a href="#galeri" class="close-btn">✖ Kapat</a>
+  <a href="#img2" class="lightbox-nav lightbox-prev">❮</a>
   <img src="kupeste-sonra3.jpeg">
-  <a href="#img10" class="lightbox-nav lightbox-next">❯</a>
+  <a href="#img4" class="lightbox-nav lightbox-next">❯</a>
 </div>
-<div id="img10" class="lightbox">
-  <a href="#img9" class="lightbox-nav lightbox-prev">❮</a>
+<div id="img4" class="lightbox">
+  <a href="#galeri" class="close-btn">✖ Kapat</a>
+  <a href="#img3" class="lightbox-nav lightbox-prev">❮</a>
   <img src="kupeste-sonra4.jpeg">
-  <a href="#img11" class="lightbox-nav lightbox-next">❯</a>
+  <a href="#img5" class="lightbox-nav lightbox-next">❯</a>
 </div>
-<div id="img11" class="lightbox">
-  <a href="#img10" class="lightbox-nav lightbox-prev">❮</a>
+<div id="img5" class="lightbox">
+  <a href="#galeri" class="close-btn">✖ Kapat</a>
+  <a href="#img4" class="lightbox-nav lightbox-prev">❮</a>
   <img src="kupeste-sonra5.jpeg">
-  <a href="#img12" class="lightbox-nav lightbox-next">❯</a>
+  <a href="#img6" class="lightbox-nav lightbox-next">❯</a>
 </div>
-<div id="img12" class="lightbox">
-  <a href="#img11" class="lightbox-nav lightbox-prev">❮</a>
+<div id="img6" class="lightbox">
+  <a href="#galeri" class="close-btn">✖ Kapat</a>
+  <a href="#img5" class="lightbox-nav lightbox-prev">❮</a>
   <img src="kupeste-sonra6.jpeg">
-  <a href="#img7" class="lightbox-nav lightbox-next">❯</a>
+  <a href="#img1" class="lightbox-nav lightbox-next">❯</a>
 </div>
+
 
 
 

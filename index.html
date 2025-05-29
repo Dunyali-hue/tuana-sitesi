@@ -245,44 +245,100 @@ nav a:hover {
 
 <section id="ulasim" class="section">
   <h2>📍 Tuana Sitesi Konum ve Ulaşım Bilgileri</h2>
-  <div class="ulasim-grid">
-    <!-- Ulaşım -->
-    <div class="ulasim-kategori">
-      <h3>🚍 Ulaşım</h3>
-      <ul>
-        <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/bus.png" alt="Otobüs" width="24"> Toplu Taşıma – <strong>50 m</strong></li>
-        <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/road.png" alt="Ana Yol" width="24"> Ana Yol – <strong>200 m</strong></li>
-        <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/airport.png" alt="Havaalanı" width="24"> Bodrum-Milas Havalimanı – <strong>75 km</strong></li>
-        <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/ferry.png" alt="Marina" width="24"> Bodrum Limanı – <strong>110 km</strong></li>
-        <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/ferry.png" alt="Marina" width="24"> Marmaris Limanı – <strong>65 km</strong></li>
-      </ul>
-    </div>
 
-    <!-- Eğitim & Sağlık -->
-    <div class="ulasim-kategori">
-      <h3>🎓 Eğitim & Sağlık</h3>
-      <ul>
-        <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/school.png" alt="İlköğretim" width="24"> İlköğretim Okulu – <strong>500 m</strong></li>
-        <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/highschool.png" alt="Lise" width="24"> Lise – <strong>3 km</strong></li>
-        <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/university.png" alt="Üniversite" width="24"> Üniversite – <strong>7 km</strong></li>
-        <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/clinic.png" alt="Poliklinik" width="24"> Sağlık Ocağı / Poliklinik – <strong>3 km</strong></li>
-        <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/hospital.png" alt="Hastane" width="24"> Hastane – <strong>3 km</strong></li>
-      </ul>
-    </div>
+  <!-- Açılır Menü Stili -->
+  <style>
+    .accordion {
+      background-color: #f1f1f1;
+      color: #004466;
+      cursor: pointer;
+      padding: 12px;
+      width: 100%;
+      text-align: left;
+      border: none;
+      outline: none;
+      font-size: 16px;
+      transition: 0.3s;
+      margin-top: 10px;
+    }
+    .active, .accordion:hover {
+      background-color: #d9e9f2;
+    }
+    .panel {
+      padding: 0 18px;
+      display: none;
+      background-color: white;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+    .panel ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .panel li {
+      margin: 10px 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .panel img {
+      width: 24px;
+      height: 24px;
+    }
+  </style>
 
-    <!-- Sosyal & Kamu -->
-    <div class="ulasim-kategori">
-      <h3>🏛️ Sosyal & Kamu</h3>
-      <ul>
-        <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/municipality.png" alt="Belediye" width="24"> Belediye Binası – <strong>5 km</strong></li>
-        <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/mall.png" alt="AVM" width="24"> Alışveriş Merkezi – <strong>3 km</strong></li>
-        <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/park.png" alt="Park" width="24"> Park / Oyun Alanı – <strong>200 m</strong></li>
-        <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/government.png" alt="Valilik" width="24"> Valilik / Kaymakamlık – <strong>5 km</strong></li>
-        <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/science.png" alt="Kültür Merkezi" width="24"> Kültür / Bilim Merkezi – <strong>3 km</strong></li>
-      </ul>
-    </div>
+  <!-- Ulaşım -->
+  <button class="accordion">🚍 Ulaşım</button>
+  <div class="panel">
+    <ul>
+      <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/bus.png"> Toplu Taşıma – <strong>50 m</strong></li>
+      <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/road.png"> Ana Yol – <strong>200 m</strong></li>
+      <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/airport.png"> Bodrum-Milas Havalimanı – <strong>75 km</strong></li>
+      <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/ferry.png"> Bodrum Limanı – <strong>110 km</strong></li>
+      <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/ferry.png"> Marmaris Limanı – <strong>65 km</strong></li>
+    </ul>
   </div>
+
+  <!-- Eğitim & Sağlık -->
+  <button class="accordion">🎓 Eğitim & Sağlık</button>
+  <div class="panel">
+    <ul>
+      <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/school.png"> İlköğretim Okulu – <strong>500 m</strong></li>
+      <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/highschool.png"> Lise – <strong>3 km</strong></li>
+      <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/university.png"> Üniversite – <strong>7 km</strong></li>
+      <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/clinic.png"> Sağlık Ocağı / Poliklinik – <strong>3 km</strong></li>
+      <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/hospital.png"> Hastane – <strong>3 km</strong></li>
+    </ul>
+  </div>
+
+  <!-- Sosyal & Kamu -->
+  <button class="accordion">🏛️ Sosyal & Kamu</button>
+  <div class="panel">
+    <ul>
+      <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/municipality.png"> Belediye Binası – <strong>5 km</strong></li>
+      <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/mall.png"> Alışveriş Merkezi – <strong>3 km</strong></li>
+      <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/park.png"> Park / Oyun Alanı – <strong>200 m</strong></li>
+      <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/government.png"> Valilik / Kaymakamlık – <strong>5 km</strong></li>
+      <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/science.png"> Kültür / Bilim Merkezi – <strong>3 km</strong></li>
+    </ul>
+  </div>
+
+  <script>
+    const acc = document.getElementsByClassName("accordion");
+    for (let i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        const panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+          panel.style.display = "none";
+        } else {
+          panel.style.display = "block";
+        }
+      });
+    }
+  </script>
 </section>
+
            
       
       <div style="background-color: #fef6e4; padding: 1rem; margin-top: 1rem; border-left: 4px solid #fbbf24; border-radius: 8px;">

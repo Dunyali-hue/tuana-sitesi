@@ -634,40 +634,145 @@ function showSlide(n) {
     }
   </script>
 
-<script>
-let currentIndex = 1;
-const images = [
-  "kupeste-bakim1.jpeg", "kupeste-bakim2.jpeg", "kupeste-bakim3.jpeg",
-  "kupeste-bakim4.jpeg", "kupeste-bakim5.jpeg", "kupeste-bakim6.jpeg",
-  "boya1.jpeg", "boya2.jpeg", "boya3.jpeg",
-  "asansor1.jpeg", "asansor2.jpeg", "asansor3.jpeg"
-];
+<section id="galeri" class="section">
+  <h2>🖼️ Tuana Sitesi Galeri</h2>
 
-function openLightbox() {
-  document.getElementById("lightbox").style.display = "block";
-}
+  <style>
+    .accordion {
+      background-color: #f1f1f1;
+      color: #004466;
+      cursor: pointer;
+      padding: 12px;
+      width: 100%;
+      text-align: left;
+      border: none;
+      outline: none;
+      font-size: 16px;
+      transition: 0.3s;
+      margin-top: 10px;
+    }
+    .active, .accordion:hover {
+      background-color: #d9e9f2;
+    }
+    .panel {
+      padding: 0 18px;
+      display: none;
+      background-color: white;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+    .galeri-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 1rem;
+    }
+    .galeri-grid img {
+      width: 160px;
+      height: auto;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .galeri-grid img:hover {
+      transform: scale(1.05);
+    }
 
-function closeLightbox() {
-  document.getElementById("lightbox").style.display = "none";
-}
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      padding-top: 60px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.9);
+    }
+    .lightbox-content {
+      margin: auto;
+      display: block;
+      max-width: 90%;
+      max-height: 80vh;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: white;
+      font-size: 30px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
 
-function currentSlide(n) {
-  currentIndex = n;
-  showSlide(n);
-}
+  <button class="accordion">🧱 Küpeşte Bakımı</button>
+  <div class="panel">
+    <div class="galeri-grid">
+      <img src="kupeste-bakim1.jpeg" alt="Kupeste Bakım 1">
+      <img src="kupeste-bakim2.jpeg" alt="Kupeste Bakım 2">
+      <img src="kupeste-bakim3.jpeg" alt="Kupeste Bakım 3">
+      <img src="kupeste-bakim4.jpeg" alt="Kupeste Bakım 4">
+      <img src="kupeste-bakim5.jpeg" alt="Kupeste Bakım 5">
+      <img src="kupeste-bakim6.jpeg" alt="Kupeste Bakım 6">
+    </div>
+  </div>
 
-function changeSlide(n) {
-  currentIndex += n;
-  if (currentIndex < 1) currentIndex = images.length;
-  if (currentIndex > images.length) currentIndex = 1;
-  showSlide(currentIndex);
-}
+  <button class="accordion">🎨 Ortak Alan Boya Çalışması</button>
+  <div class="panel">
+    <div class="galeri-grid">
+      <img src="boya1.jpeg" alt="Boya 1">
+      <img src="boya2.jpeg" alt="Boya 2">
+      <img src="boya3.jpeg" alt="Boya 3">
+    </div>
+  </div>
 
-function showSlide(n) {
-  const img = document.getElementById("lightbox-img");
-  img.src = images[n - 1];
-}
-</script>
+  <button class="accordion">🚪 Asansör Çalışması</button>
+  <div class="panel">
+    <div class="galeri-grid">
+      <img src="asansor1.jpeg" alt="Asansör 1">
+      <img src="asansor2.jpeg" alt="Asansör 2">
+      <img src="asansor3.jpeg" alt="Asansör 3">
+    </div>
+  </div>
+
+  <!-- Lightbox yapısı -->
+  <div id="lightbox" class="lightbox">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+  </div>
+
+  <script>
+    const accGaleri = document.querySelectorAll(".accordion");
+    accGaleri.forEach(btn => {
+      btn.addEventListener("click", () => {
+        btn.classList.toggle("active");
+        const panel = btn.nextElementSibling;
+        panel.style.display = panel.style.display === "block" ? "none" : "block";
+      });
+    });
+
+    // Lightbox fonksiyonları
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    const galleryImages = document.querySelectorAll(".galeri-grid img");
+
+    galleryImages.forEach(img => {
+      img.addEventListener("click", () => {
+        lightbox.style.display = "block";
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.style.display = "none";
+    }
+  </script>
+</section>
+
 
            
   </body>

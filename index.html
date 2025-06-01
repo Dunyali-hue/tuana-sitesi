@@ -619,25 +619,7 @@ function showSlide(n) {
   <a class="next" onclick="changeSlide(1)">❯</a>
 </div>
 
-           
-  </main>
-  <button onclick="scrollToTop()" id="toTopBtn" title="Yukarı çık">⬆️ Ana Sayfa</button>
-  <footer>
-    <p>&copy; 2025 Tuana Sitesi Yönetimi</p>
-  </footer>
-  <script>
-    window.onscroll = function() {
-      const btn = document.getElementById("toTopBtn");
-      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-        btn.style.display = "block";
-      } else {
-        btn.style.display = "none";
-      }
-    };
-    function scrollToTop() {
-      window.scrollTo({top: 0, behavior: 'smooth'});
-    }
-  </script>
+
 
 <section id="galeri" class="section">
   <h2>🖼️ Tuana Sitesi Galeri</h2>
@@ -789,6 +771,23 @@ function showSlide(n) {
   }
 </script>
 
-           
+           </main>
+  <button onclick="scrollToTop()" id="toTopBtn" title="Yukarı çık">⬆️ Ana Sayfa</button>
+  <footer>
+    <p>&copy; 2025 Tuana Sitesi Yönetimi</p>
+  </footer>
+  <script>
+    window.onscroll = function() {
+      const btn = document.getElementById("toTopBtn");
+      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        btn.style.display = "block";
+      } else {
+        btn.style.display = "none";
+      }
+    };
+    function scrollToTop() {
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+  </script>
   </body>
 </html>

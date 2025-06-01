@@ -114,7 +114,9 @@
   <a href="#duyurular">Duyurular</a>
   <a href="#raporlar">Faaliyet Raporları</a>
   <a href="#galeri">Galeri</a>
+  <a href="#ulasim">Konum & Ulaşım</a> 
 </nav>
+
 
 <style>
 nav {
@@ -242,7 +244,6 @@ nav a:hover {
     });
 </script>
 
-
 <section id="ulasim" class="section">
   <h2>📍 Tuana Sitesi Konum ve Ulaşım Bilgileri</h2>
 
@@ -259,64 +260,63 @@ nav a:hover {
       font-size: 16px;
       transition: 0.3s;
       margin-top: 10px;
+      border-radius: 5px;
     }
-    .active, .accordion:hover {
+
+    .accordion:hover, .active {
       background-color: #d9e9f2;
     }
+
     .panel {
-      padding: 0 18px;
+      padding: 0 20px;
       display: none;
       background-color: white;
       overflow: hidden;
       margin-bottom: 1rem;
     }
+
     .panel ul {
       list-style-type: disc;
       padding-left: 1.5rem;
       margin-top: 1rem;
+      text-align: left;
     }
+
     .panel li {
-      margin: 10px 0;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .panel img {
-      width: 24px;
-      height: 24px;
+      margin: 8px 0;
     }
   </style>
 
   <button class="accordion">🚍 Ulaşım</button>
   <div class="panel">
     <ul>
-      <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/bus.png" alt="Otobüs"> Toplu Taşıma – <strong>50 m</strong></li>
-      <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/road.png" alt="Ana Yol"> Ana Yol – <strong>200 m</strong></li>
-      <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/airport.png" alt="Havaalanı"> Bodrum-Milas Havalimanı – <strong>75 km</strong></li>
-      <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/ferry.png" alt="Bodrum"> Bodrum Limanı – <strong>110 km</strong></li>
-      <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/ferry.png" alt="Marmaris"> Marmaris Limanı – <strong>65 km</strong></li>
+      <li>Toplu Taşıma (Otobüs / Minibüs): <strong>50 m</strong></li>
+      <li>Ana Yol: <strong>200 m</strong></li>
+      <li>Havaalanı (Bodrum-Milas): <strong>75 km</strong></li>
+      <li>Deniz Ulaşımı / Bodrum Limanı: <strong>110 km</strong></li>
+      <li>Deniz Ulaşımı / Marmaris Limanı: <strong>65 km</strong></li>
     </ul>
   </div>
 
   <button class="accordion">🎓 Eğitim & Sağlık</button>
   <div class="panel">
     <ul>
-      <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/school.png" alt="İlkokul"> İlköğretim Okulu – <strong>500 m</strong></li>
-      <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/highschool.png" alt="Lise"> Lise – <strong>3 km</strong></li>
-      <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/university.png" alt="Üniversite"> Üniversite – <strong>7 km</strong></li>
-      <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/clinic.png" alt="Poliklinik"> Sağlık Ocağı / Poliklinik – <strong>3 km</strong></li>
-      <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/hospital.png" alt="Hastane"> Hastane – <strong>3 km</strong></li>
+      <li>İlköğretim Okulu: <strong>500 m</strong></li>
+      <li>Lise: <strong>3 km</strong></li>
+      <li>Üniversite: <strong>7 km</strong></li>
+      <li>Sağlık Ocağı / Poliklinik: <strong>3 km</strong></li>
+      <li>Hastane: <strong>3 km</strong></li>
     </ul>
   </div>
 
   <button class="accordion">🏛️ Sosyal & Kamu</button>
   <div class="panel">
     <ul>
-      <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/municipality.png" alt="Belediye"> Belediye Binası – <strong>5 km</strong></li>
-      <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/mall.png" alt="AVM"> Alışveriş Merkezi – <strong>3 km</strong></li>
-      <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/park.png" alt="Park"> Park / Oyun Alanı – <strong>200 m</strong></li>
-      <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/government.png" alt="Valilik"> Valilik / Kaymakamlık – <strong>5 km</strong></li>
-      <li><img src="https://dunyali-hue.github.io/tuana-sitesi/icons/science.png" alt="Bilim Merkezi"> Kültür / Bilim Merkezi – <strong>3 km</strong></li>
+      <li>Belediye Binası: <strong>5 km</strong></li>
+      <li>Alışveriş Merkezi: <strong>3 km</strong></li>
+      <li>Park / Oyun Alanı: <strong>200 m</strong></li>
+      <li>Valilik / Kaymakamlık: <strong>5 km</strong></li>
+      <li>Kültür / Bilim Merkezi: <strong>3 km</strong></li>
     </ul>
   </div>
 
@@ -326,7 +326,11 @@ nav a:hover {
       acc[i].addEventListener("click", function () {
         this.classList.toggle("active");
         const panel = this.nextElementSibling;
-        panel.style.display = panel.style.display === "block" ? "none" : "block";
+        if (panel.style.display === "block") {
+          panel.style.display = "none";
+        } else {
+          panel.style.display = "block";
+        }
       });
     }
   </script>

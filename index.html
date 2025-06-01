@@ -1,797 +1,96 @@
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Tuana Sitesi</title>
-
   <style>
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-.gallery img {
-  width: 150px;
-  height: auto;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-.gallery img:hover {
-  transform: scale(1.05);
-}
-
-.lightbox {
-  display: none;
-  position: fixed;
-  z-index: 999;
-  left: 0; top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.9);
-  text-align: center;
-  padding-top: 60px;
-}
-.lightbox img {
-  max-width: 90%;
-  max-height: 80vh;
-}
-.close {
-  position: absolute;
-  top: 20px;
-  right: 40px;
-  font-size: 30px;
-  color: white;
-  cursor: pointer;
-}
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  font-size: 40px;
-  color: white;
-  padding: 10px;
-  transform: translateY(-50%);
-}
-.prev { left: 30px; }
-.next { right: 30px; }
-
-.galeri-baslik {
-  font-weight: bold;
-  font-size: 1.2rem;
-  margin-top: 2rem;
-  margin-bottom: 0.5rem;
-}
-</style>
-<style>
-  .accordion {
-    background-color: #f1f1f1;
-    color: #004466;
-    cursor: pointer;
-    padding: 12px;
-    width: 100%;
-    text-align: left;
-    border: none;
-    outline: none;
-    font-size: 16px;
-    transition: 0.3s;
-    margin-top: 10px;
-    border-radius: 5px;
-  }
-
-  .accordion.active, .accordion:hover {
-    background-color: #d9e9f2;
-  }
-
-  .panel {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
-    background-color: white;
-    margin-bottom: 1rem;
-    padding: 0 1rem;
-    border-left: 3px solid #004466;
-  }
-
-  .panel ul {
-    list-style: disc;
-    padding-left: 1.5rem;
-    margin-top: 1rem;
-  }
-
-  .panel li {
-    margin: 8px 0;
-  }
-</style>
-
-  <style>
-    body { font-family: sans-serif; margin: 0; padding: 0; background: #f4f4f4; }
-    header, footer { background-color: #004466; color: white; text-align: center; padding: 1rem; }
-    nav { background: #eee; padding: 0.5rem; text-align: center; }
-    nav a { margin: 0 10px; text-decoration: none; color: #004466; font-weight: bold; }
+    body { font-family: sans-serif; margin: 0; background: #f4f4f4; }
+    header, footer { background: #004466; color: white; text-align: center; padding: 1rem; }
+    nav { background: #eee; padding: 1rem; text-align: center; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    nav a { color: #004466; font-weight: bold; text-decoration: none; }
+    nav a:hover { text-decoration: underline; }
     main { padding: 1rem; }
-    section { margin-bottom: 2rem; background: white; padding: 1rem; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
-    img.logo { max-width: 120px; margin-bottom: 1rem; }
-
-    #toTopBtn {
-      display: none;
-      position: fixed;
-      bottom: 30px;
-      right: 20px;
-      z-index: 99;
-      font-size: 16px;
-      border: none;
-      outline: none;
-      background-color: #004466;
-      color: white;
-      cursor: pointer;
-      padding: 10px 15px;
-      border-radius: 8px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.2);
-    }
-    #toTopBtn:hover {
-      background-color: #006699;
-    }
-
-    @media (max-width: 600px) {
-      nav { font-size: 0.9rem; }
-    }
+    section { background: white; margin-bottom: 2rem; padding: 1rem; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+    img.logo { max-width: 120px; }
+    .accordion { background-color: #f1f1f1; color: #004466; cursor: pointer; padding: 12px; width: 100%; text-align: left; border: none; font-size: 16px; transition: 0.3s; margin-top: 10px; }
+    .active, .accordion:hover { background-color: #d9e9f2; }
+    .panel { padding: 0 18px; display: none; background-color: white; margin-bottom: 1rem; }
+    .panel ul { list-style-type: disc; padding-left: 1.5rem; margin-top: 1rem; }
+    .panel li { margin: 10px 0; text-align: left; }
   </style>
 </head>
 <body>
   <header>
-    <img src="logo.png" alt="Tuana Sitesi Logosu" class="logo">
+    <img src="logo.png" alt="Tuana Sitesi Logosu" class="logo" />
     <h1>Tuana Park Rezidans Evleri Sitesi</h1>
     <p>Resmi Bilgilendirme Sayfası</p>
   </header>
- 
-<nav>
-  <a href="#anasayfa">Ana Sayfa</a>
-  <a href="#hakkimizda">Hakkımızda</a>
-  <a href="#yonetim">Yönetim</a>
-  <a href="#odeme">Ödeme Bilgisi</a>
-  <a href="#duyurular">Duyurular</a>
-  <a href="#raporlar">Faaliyet Raporları</a>
-  <a href="#galeri">Galeri</a>
-  <a href="#ulasim">Konum & Ulaşım</a> 
-</nav>
 
+  <nav>
+    <a href="#anasayfa">Ana Sayfa</a>
+    <a href="#hakkimizda">Hakkımızda</a>
+    <a href="#yonetim">Yönetim</a>
+    <a href="#odeme">Ödeme</a>
+    <a href="#duyurular">Duyurular</a>
+    <a href="#raporlar">Raporlar</a>
+    <a href="#galeri">Galeri</a>
+    <a href="#ulasim">Ulaşım</a>
+  </nav>
 
-<style>
-nav {
-  background: #eee;
-  padding: 0.5rem;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-nav a {
-  color: #004466;
-  font-weight: bold;
-  text-decoration: none;
-  font-size: 1rem;
-}
-nav a:hover {
-  text-decoration: underline;
-}
-</style>
-
-  
   <main>
-   
-    <section id="anasayfa">
-      <img src="banner.jpg" alt="Tuana Sitesi Genel Görünüm" style="width: 100%; border-radius: 8px; margin-bottom: 1rem;">
-      <h2>Tuana Sitesi'ne Hoş Geldiniz</h2>
-      <p><strong>Tuana Park Rezidans Evleri</strong>, doğa ile iç içe, konforlu yaşam alanları sunan modern bir yaşam merkezidir. A, B ve C bloklardan oluşan sitemiz, toplam 40 daireden oluşmakta ve sakinlerine huzurlu bir çevre sunmaktadır.</p>
-      <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 1rem; align-items: center;">
-        <div style="text-align: center;">
-          <h3>Saat</h3>
+    <section id="ulasim" class="section">
+      <h2>📍 Tuana Sitesi Konum ve Ulaşım Bilgileri</h2>
 
-         <div style="display: flex; gap: 20px; flex-wrap: wrap;"> 
-<div id="saat-kutu">
-  <span id="saat"></span>
-</div>      
-           
-<style>
-  #saat-kutu {
-    background: #1e293b;
-    color: #ffffff;
-    padding: 10px 20px;
-    display: inline-block;
-    font-family: 'Courier New', monospace;
-    font-size: 22px;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    margin: 1rem auto;
-  }
-
-  @media (max-width: 600px) {
-    #saat-kutu {
-      font-size: 18px;
-      padding: 8px 16px;
-    }
-  }
-</style>
-
-<script>
-  function saatGuncelle() {
-    const saatEl = document.getElementById("saat");
-    const simdi = new Date();
-    const saat = simdi.getHours().toString().padStart(2, '0');
-    const dakika = simdi.getMinutes().toString().padStart(2, '0');
-    const saniye = simdi.getSeconds().toString().padStart(2, '0');
-    saatEl.textContent = `${saat}:${dakika}:${saniye}`;
-  }
-  setInterval(saatGuncelle, 1000);
-  saatGuncelle();
-</script>
-
-          <!-- Hava durumu kutusu -->
-<div id="hava-kutu">
-  <span id="hava">Hava durumu yükleniyor...</span>
-</div>
-
-<style>
-  #hava-kutu {
-    background: #1e293b;
-    color: #ffffff;
-    padding: 10px 20px;
-    display: inline-block;
-    font-family: 'Courier New', monospace;
-    font-size: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    margin: 1rem auto;
-  }
-
-  @media (max-width: 600px) {
-    #hava-kutu {
-      font-size: 16px;
-      padding: 8px 16px;
-    }
-  }
-</style>
-
-<script>
-  // Open-Meteo üzerinden çekiyoruz (ücretsiz, kayıt gerekmez)
-  fetch("https://api.open-meteo.com/v1/forecast?latitude=37.2161&longitude=28.3665&current_weather=true")
-    .then(response => response.json())
-    .then(data => {
-      const derece = data.current_weather.temperature;
-      const ruzgar = data.current_weather.windspeed;
-      const durum = data.current_weather.weathercode;
-
-      const yorum = {
-        0: "Güneşli",
-        1: "Parçalı Bulutlu",
-        2: "Bulutlu",
-        3: "Kapalı",
-        45: "Sisli",
-        51: "Çisenti",
-        61: "Yağmurlu",
-        71: "Karlı",
-        95: "Fırtına"
-      };
-
-      const metin = `Menteşe: ${derece}°C – ${yorum[durum] || 'Durum Bilinmiyor'}`;
-      document.getElementById("hava").textContent = metin;
-    })
-    .catch(() => {
-      document.getElementById("hava").textContent = "Hava durumu alınamadı.";
-    });
-</script>
-
-<section id="ulasim">
-  <h2>📍 Tuana Sitesi Konum ve Ulaşım Bilgileri</h2>
-
-  <button class="accordion">🚍 Ulaşım</button>
-  <div class="panel">
-    <ul>
-      <li>Toplu Taşıma (Otobüs / Minibüs): <strong>50 m</strong></li>
-      <li>Ana Yol: <strong>200 m</strong></li>
-      <li>Havaalanı: <strong>75 km (Bodrum-Milas)</strong></li>
-      <li>Deniz Ulaşımı – Bodrum Limanı: <strong>110 km</strong></li>
-      <li>Deniz Ulaşımı – Marmaris Limanı: <strong>65 km</strong></li>
-    </ul>
-  </div>
-
-  <button class="accordion">🎓 Eğitim & Sağlık</button>
-  <div class="panel">
-    <ul>
-      <li>İlköğretim Okulu: <strong>500 m</strong></li>
-      <li>Lise: <strong>3 km</strong></li>
-      <li>Üniversite: <strong>7 km</strong></li>
-      <li>Sağlık Ocağı: <strong>3 km</strong></li>
-      <li>Hastane: <strong>3 km</strong></li>
-    </ul>
-  </div>
-
-  <button class="accordion">🏛️ Sosyal & Kamu</button>
-  <div class="panel">
-    <ul>
-      <li>Belediye Binası: <strong>5 km</strong></li>
-      <li>Alışveriş Merkezi: <strong>3 km</strong></li>
-      <li>Park / Oyun Alanı: <strong>200 m</strong></li>
-      <li>Valilik / Kaymakamlık: <strong>5 km</strong></li>
-      <li>Kültür / Bilim Merkezi: <strong>3 km</strong></li>
-    </ul>
-  </div>
-</section>
-
-
-
-           
-      
-      <div style="background-color: #fef6e4; padding: 1rem; margin-top: 1rem; border-left: 4px solid #fbbf24; border-radius: 8px;">
-        <h3>🌞 Yaz Temizliği Başladı!</h3>
-        <p>5–6 Haziran tarihlerinde blok çevresi, otopark ve ortak alanlarda yaz temizliği yapılacaktır. Lütfen balkon altlarındaki kişisel eşyaların kaldırılmasına özen gösteriniz. Anlayışınız için teşekkür ederiz.</p>
+      <button class="accordion">🚍 Ulaşım</button>
+      <div class="panel">
+        <ul>
+          <li>Toplu Taşıma – <strong>50 m</strong></li>
+          <li>Ana Yol – <strong>200 m</strong></li>
+          <li>Bodrum-Milas Havalimanı – <strong>75 km</strong></li>
+          <li>Bodrum Limanı – <strong>110 km</strong></li>
+          <li>Marmaris Limanı – <strong>65 km</strong></li>
+        </ul>
       </div>
 
+      <button class="accordion">🎓 Eğitim & Sağlık</button>
+      <div class="panel">
+        <ul>
+          <li>İlköğretim Okulu – <strong>500 m</strong></li>
+          <li>Lise – <strong>3 km</strong></li>
+          <li>Üniversite – <strong>7 km</strong></li>
+          <li>Sağlık Ocağı – <strong>3 km</strong></li>
+          <li>Hastane – <strong>3 km</strong></li>
+        </ul>
+      </div>
 
-           <div style="
-  background-color: #e0f7fa;
-  border-left: 6px solid #0288d1;
-  padding: 1rem;
-  margin: 2rem 0;
-  border-radius: 10px;
-  box-shadow: 0 0 6px rgba(0,0,0,0.05);
-  font-family: sans-serif;
-">
-  <strong>🏢 Tuana Sitesi Özellikleri</strong>
-  <ul style="list-style: none; padding-left: 0; margin-top: 0.5rem;">
-    <li>🛗 Asansörlü, modern yapılar</li>
-    <li>🅿️ Her daireye özel otopark</li>
-    <li>🌿 Peyzajlı bahçeler ve yeşil alanlar</li>
-    <li>🛡️ 7/24 güvenlik ve kamera sistemi</li>
-    <li>🧹 Temizlik, bakım ve çevre düzenleme hizmetleri</li>
-  </ul>
-</div>
-
-
-    
-    <section id="hakkimizda">
-      <h2>Hakkımızda</h2>
-      <ul>
-        <li>3 Blok (A, B, C)</li>
-        <li>Toplam 40 daire</li>
-        <li>Her daireye özel otopark alanı</li>
-        <li>Yönetim ofisi C Blok -1 kat</li>
-      </ul>
+      <button class="accordion">🏛️ Sosyal & Kamu</button>
+      <div class="panel">
+        <ul>
+          <li>Belediye – <strong>5 km</strong></li>
+          <li>AVM – <strong>3 km</strong></li>
+          <li>Park – <strong>200 m</strong></li>
+          <li>Valilik – <strong>5 km</strong></li>
+          <li>Kültür Merkezi – <strong>3 km</strong></li>
+        </ul>
+      </div>
     </section>
+  </main>
 
-
-    
-    <section id="yonetim">
-      <h2>Yönetim ve İletişim</h2>
-      <ul>
-        <li><strong>Atilla ÖZKAN</strong> – Site Yönetim Kurulu Başkanı</li>
-        <li><strong>Eymen GÜREL</strong> – Başkan Yardımcısı</li>
-        <li><strong>Atılgan ERÖZKAN</strong> – Başkan Yardımcısı</li>
-      </ul>
-      <p>Telefon / WhatsApp: <a href="tel:+905551112233">+90 555 111 2233</a></p>
-    </section>
-
-
-    
-    <section id="duyurular">
-      <h2>Duyurular</h2>
-      <ul>
-        <li>B Blok asansör yapımı tamamlandı. (Mayıs 2025)</li>
-        <li>Merdiven boşluğu boyama çalışmaları devam ediyor.</li>
-        <li>Haziran ayında olağanüstü genel kurul yapılacaktır.</li>
-        <li><strong>C Blok</strong> merdiven korkulukları yenilenecek – <em>Haziran 2025</em></li>
-        <li><strong>Aidat</strong> ödemeleri için son tarih: <em>10 Haziran 2025</em></li>
-        <li><strong>Otopark</strong> alanları numaralandırılacaktır</li>
-        <li><strong>Genel temizlik</strong>: 5–6 Haziran 2025 tarihlerinde yapılacaktır</li>
-      </ul>
-    </section>
-
-
-    
-    <section id="raporlar">
-      <h2>Faaliyet Raporları</h2>
-      <p>Tuana Sitesi’nin aylık faaliyet raporlarını bu bölümde inceleyebilirsiniz.</p>
-      <ul>
-        <li><a href="raporlar/faaliyet_raporu_subat2025.pdf" target="_blank"> Şubat 2025 - Aylık Faaliyet Raporu (PDF)</a></li>    
-        <li><a href="raporlar/ocak2025.pdf" target="_blank">Ocak 2025 - Aylık Faaliyet Raporu (PDF)</a></li>
-        <li><a href="raporlar/aralik2024.pdf" target="_blank">Aralık 2024 - Aylık Faaliyet Raporu (PDF)</a></li>
-      </ul>
-      <p>Yeni raporlar her ayın ilk haftası bu sayfaya eklenecektir.</p>
-    </section>
-
-    
-    <section id="odeme">
-     <h2>Ödeme Bilgisi</h2>
-  <p>Tuana Sitesi sakinlerinin aidat ve katkı payı ödemelerini yapabilecekleri bilgiler aşağıda sunulmuştur.</p>
-  <ul>
-    <li><strong> Tadilat Katkı Payı 2. Taksit Son Ödeme Tarihi:</strong> 31 Mayıs 2025</li>
-    <li><strong>Banka:</strong> Ziraat Bankası – Muğla Şubesi</li>
-    <li><strong>IBAN:</strong> TR00 0000 0000 0000 0000 0000 00</li>
-    <li><strong>Açıklama:</strong> "[Ad-Soyad] - Blok/Daire No - Katkı Payı" yazılmalıdır.</li>
-  </ul>
-  <p>Ödemelerinizi zamanında yapmanız, ortak giderlerin sağlıklı yönetilmesi açısından büyük önem taşımaktadır. Teşekkür ederiz.</p>
-</section>
-      <h2>Ödeme Bilgisi</h2>
-      <p>Tuana Sitesi sakinlerinin aidat ve katkı payı ödemelerini yapabilecekleri bilgiler aşağıda sunulmuştur.</p>
-      <ul>
-    <li><strong>A Blok Aidat:</strong> 1350 TL</li>
-    <li><strong>B ve C Blok Aidat:</strong> 1300 TL</li>
-    <li><strong>B4 ve C4 Daireleri:</strong> 1250 TL</li>
-        <li><strong>Banka:</strong> Ziraat Bankası – Muğla Şubesi</li>
-        <li><strong>IBAN:</strong> TR00 0000 0000 0000 0000 0000 00</li>
-        <li><strong>Açıklama:</strong> "[Ad-Soyad] - Blok/Daire No - Aidat/Katkı Payı" yazılmalıdır.</li>
-      </ul>
-      <p>Ödemelerinizi zamanında yapmanız, ortak giderlerin sağlıklı yönetilmesi açısından büyük önem taşımaktadır. Teşekkür ederiz.</p>
-    </section>
-
-<section id="galeri" class="section">
-  <h2>📸 Galeri</h2>
-
-  <!-- Küpeşte Bakımı -->
-  <div class="galeri-baslik">Küpeşte Bakımı</div>
-  <div class="gallery">
-    <img src="kupeste-bakim1.jpeg" onclick="openLightbox();currentSlide(1)">
-    <img src="kupeste-bakim2.jpeg" onclick="openLightbox();currentSlide(2)">
-    <img src="kupeste-bakim3.jpeg" onclick="openLightbox();currentSlide(3)">
-    <img src="kupeste-bakim4.jpeg" onclick="openLightbox();currentSlide(4)">
-    <img src="kupeste-bakim5.jpeg" onclick="openLightbox();currentSlide(5)">
-    <img src="kupeste-bakim6.jpeg" onclick="openLightbox();currentSlide(6)">
-  </div>
-
-  <!-- Ortak Alan Boya Çalışması -->
-  <div class="galeri-baslik">Ortak Alan Boya Çalışması</div>
-  <div class="gallery">
-    <img src="boya1.jpeg" onclick="openLightbox();currentSlide(7)">
-    <img src="boya2.jpeg" onclick="openLightbox();currentSlide(8)">
-    <img src="boya3.jpeg" onclick="openLightbox();currentSlide(9)">
-  </div>
-
-  <!-- Asansör Çalışması -->
-  <div class="galeri-baslik">Asansör Çalışması</div>
-  <div class="gallery">
-    <img src="asansor1.jpeg" onclick="openLightbox();currentSlide(10)">
-    <img src="asansor2.jpeg" onclick="openLightbox();currentSlide(11)">
-    <img src="asansor3.jpeg" onclick="openLightbox();currentSlide(12)">
-  </div>
-</section>
-
-
-<script>
-let currentIndex = 1;
-const images = [
-  "kupeste-bakim1.jpeg",
-  "kupeste-bakim2.jpeg",
-  "kupeste-bakim3.jpeg",
-  "kupeste-bakim4.jpeg",
-  "kupeste-bakim5.jpeg",
-  "kupeste-bakim6.jpeg",
-  "boya1.jpeg",
-  "boya2.jpeg",
-  "boya3.jpeg",
-  "asansor1.jpeg",
-  "asansor2.jpeg",
-  "asansor3.jpeg"
-];
-function openLightbox() {
-  document.getElementById("lightbox").style.display = "block";
-}
-
-function closeLightbox() {
-  document.getElementById("lightbox").style.display = "none";
-}
-
-function currentSlide(n) {
-  currentIndex = n;
-  showSlide(currentIndex);
-}
-
-function changeSlide(n) {
-  currentIndex += n;
-  if (currentIndex < 1) currentIndex = images.length;
-  if (currentIndex > images.length) currentIndex = 1;
-  showSlide(currentIndex);
-}
-
-function showSlide(n) {
-  const lightboxImg = document.getElementById("lightbox-img");
-  lightboxImg.src = images[n - 1];
-}
-</script>
-
-
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bilgilendirme Kutusu Örneği</title>
-
-  <style>
-    .bilgi-kutusu {
-      padding: 1rem;
-      margin: 2rem 0;
-      border-radius: 10px;
-      box-shadow: 0 0 6px rgba(0,0,0,0.05);
-      font-family: sans-serif;
-    }
-
-    .bilgi-kutusu ul {
-      list-style: none;
-      padding-left: 0;
-      margin: 0.5rem 0 0 0;
-    }
-
-    .bilgi-kutusu li {
-      margin-bottom: 0.5rem;
-    }
-
-    .mavi {
-      background-color: #e0f7fa;
-      border-left: 6px solid #0288d1;
-    }
-
-    .sari {
-      background-color: #fff8dc;
-      border-left: 6px solid #fbbf24;
-    }
-
-    .yesil {
-      background-color: #e8f5e9;
-      border-left: 6px solid #43a047;
-    }
-
-    .kirmizi {
-      background-color: #fdecea;
-      border-left: 6px solid #e53935;
-    }
-
-    .gri {
-      background-color: #f0f0f0;
-      border-left: 6px solid #757575;
-    }
-  </style>
-</head>
-<body>
-
-  <div class="bilgi-kutusu yesil">
-    <strong>📞 Yardım ve Acil İletişim</strong>
-    <ul>
-      <li>🔧 Teknik Servis: 0532 123 4567</li>
-      <li>🧯 Yangın – Acil Durum: 110</li>
-      <li>🔐 Güvenlik Danışma: 0532 987 6543</li>
-    </ul>
-  </div>
-
-  <div class="bilgi-kutusu sari">
-    <strong>🧹 Yaz Temizliği Duyurusu</strong>
-    <p>5–6 Haziran’da tüm ortak alanlar detaylı şekilde temizlenecektir. Eşyalarınızı balkon altından çekiniz.</p>
-  </div>
-
-  <div class="bilgi-kutusu kirmizi">
-    <strong>📣 Genel Kurul Toplantısı</strong>
-    <p>20 Haziran 2025 Cuma saat 18:00’de C Blok altı toplantı salonunda yapılacaktır.</p>
-  </div>
-
-</body>
-</html>
-
-
-  
-
-<div class="bilgi-kutusu kirmizi">
-  <strong>📣 Site Genel Kurul Toplantısı</strong>
-  <p>Tuana Sitesi yıllık genel kurulu 20 Haziran 2025 Cuma günü saat 18.00’de C Blok altı toplantı salonunda yapılacaktır. Tüm maliklerin katılımı önemlidir.</p>
-</div>
-
-
-<div class="bilgi-kutusu gri">
-  <strong>💳 Aidat Tutarları – Haziran 2025</strong>
-  <ul>
-    <li>🏢 A Blok: 1350 TL</li>
-    <li>🏢 B ve C Blok: 1300 TL</li>
-    <li>🏢 B4 ve C4 Daireleri: 1250 TL</li>
-  </ul>
-</div>
-
-  
-<!-- Lightbox kutusu -->
-<div id="lightbox" class="lightbox">
-  <span class="close" onclick="closeLightbox()">✖</span>
-  <a class="prev" onclick="changeSlide(-1)">❮</a>
-  <img id="lightbox-img" src="">
-  <a class="next" onclick="changeSlide(1)">❯</a>
-</div>
-
-
-
-<section id="galeri" class="section">
-  <h2>🖼️ Tuana Sitesi Galeri</h2>
-
-  <style>
-    .accordion {
-      background-color: #f1f1f1;
-      color: #004466;
-      cursor: pointer;
-      padding: 12px;
-      width: 100%;
-      text-align: left;
-      border: none;
-      outline: none;
-      font-size: 16px;
-      transition: 0.3s;
-      margin-top: 10px;
-    }
-    .active, .accordion:hover {
-      background-color: #d9e9f2;
-    }
-    .panel {
-      padding: 0 18px;
-      display: none;
-      background-color: white;
-      overflow: hidden;
-      margin-bottom: 1rem;
-    }
-    .galeri-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 1rem;
-    }
-    .galeri-grid img {
-      width: 160px;
-      height: auto;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-    .galeri-grid img:hover {
-      transform: scale(1.05);
-    }
-
-    /* Lightbox */
-    .lightbox {
-      display: none;
-      position: fixed;
-      z-index: 999;
-      padding-top: 60px;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0,0,0,0.9);
-    }
-    .lightbox-content {
-      margin: auto;
-      display: block;
-      max-width: 90%;
-      max-height: 80vh;
-    }
-    .lightbox-close {
-      position: absolute;
-      top: 20px;
-      right: 35px;
-      color: white;
-      font-size: 30px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-  </style>
-
-  <button class="accordion">🧱 Küpeşte Bakımı</button>
-  <div class="panel">
-    <div class="galeri-grid">
-      <img src="kupeste-bakim1.jpeg" alt="Kupeste Bakım 1">
-      <img src="kupeste-bakim2.jpeg" alt="Kupeste Bakım 2">
-      <img src="kupeste-bakim3.jpeg" alt="Kupeste Bakım 3">
-      <img src="kupeste-bakim4.jpeg" alt="Kupeste Bakım 4">
-      <img src="kupeste-bakim5.jpeg" alt="Kupeste Bakım 5">
-      <img src="kupeste-bakim6.jpeg" alt="Kupeste Bakım 6">
-    </div>
-  </div>
-
-  <button class="accordion">🎨 Ortak Alan Boya Çalışması</button>
-  <div class="panel">
-    <div class="galeri-grid">
-      <img src="boya1.jpeg" alt="Boya 1">
-      <img src="boya2.jpeg" alt="Boya 2">
-      <img src="boya3.jpeg" alt="Boya 3">
-    </div>
-  </div>
-
-  <button class="accordion">🚪 Asansör Çalışması</button>
-  <div class="panel">
-    <div class="galeri-grid">
-      <img src="asansor1.jpeg" alt="Asansör 1">
-      <img src="asansor2.jpeg" alt="Asansör 2">
-      <img src="asansor3.jpeg" alt="Asansör 3">
-    </div>
-  </div>
-
-  <!-- Lightbox yapısı -->
-  <div id="lightbox" class="lightbox">
-    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-    <img class="lightbox-content" id="lightbox-img">
-  </div>
-
-  <script>
-    const accGaleri = document.querySelectorAll(".accordion");
-    accGaleri.forEach(btn => {
-      btn.addEventListener("click", () => {
-        btn.classList.toggle("active");
-        const panel = btn.nextElementSibling;
-        panel.style.display = panel.style.display === "block" ? "none" : "block";
-      });
-    });
-
-    // Lightbox fonksiyonları
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImg = document.getElementById("lightbox-img");
-    const galleryImages = document.querySelectorAll(".galeri-grid img");
-
-    galleryImages.forEach(img => {
-      img.addEventListener("click", () => {
-        lightbox.style.display = "block";
-        lightboxImg.src = img.src;
-        lightboxImg.alt = img.alt;
-      });
-    });
-
-    function closeLightbox() {
-      lightbox.style.display = "none";
-    }
-  </script>
-</section>
-
-<script>
-  const acc = document.getElementsByClassName("accordion");
-  for (let i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function () {
-      this.classList.toggle("active");
-      const panel = this.nextElementSibling;
-      panel.style.display = panel.style.display === "block" ? "none" : "block";
-    });
-  }
-</script>
-
-           </main>
-  <button onclick="scrollToTop()" id="toTopBtn" title="Yukarı çık">⬆️ Ana Sayfa</button>
   <footer>
-    <p>&copy; 2025 Tuana Sitesi Yönetimi</p>
+    <p>&copy; 2025 Tuana Sitesi</p>
   </footer>
-  <script>
-    window.onscroll = function() {
-      const btn = document.getElementById("toTopBtn");
-      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-        btn.style.display = "block";
-      } else {
-        btn.style.display = "none";
-      }
-    };
-    function scrollToTop() {
-      window.scrollTo({top: 0, behavior: 'smooth'});
-    }
-  </script>
-           <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const acc = document.querySelectorAll(".accordion");
 
-    acc.forEach(button => {
-      button.addEventListener("click", function () {
+  <script>
+    const acc = document.getElementsByClassName("accordion");
+    for (let i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function () {
         this.classList.toggle("active");
         const panel = this.nextElementSibling;
-        if (panel.style.maxHeight) {
-          panel.style.maxHeight = null;
-        } else {
-          panel.style.maxHeight = panel.scrollHeight + "px";
-        }
+        panel.style.display = panel.style.display === "block" ? "none" : "block";
       });
-    });
-  });
-</script>
-
-  </body>
+    }
+  </script>
+</body>
 </html>

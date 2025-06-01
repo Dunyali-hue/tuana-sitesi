@@ -64,6 +64,46 @@
   margin-bottom: 0.5rem;
 }
 </style>
+<style>
+  .accordion {
+    background-color: #f1f1f1;
+    color: #004466;
+    cursor: pointer;
+    padding: 12px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    transition: 0.3s;
+    margin-top: 10px;
+    border-radius: 5px;
+  }
+
+  .accordion.active, .accordion:hover {
+    background-color: #d9e9f2;
+  }
+
+  .panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: white;
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+    border-left: 3px solid #004466;
+  }
+
+  .panel ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .panel li {
+    margin: 8px 0;
+  }
+</style>
 
   <style>
     body { font-family: sans-serif; margin: 0; padding: 0; background: #f4f4f4; }
@@ -244,57 +284,17 @@ nav a:hover {
     });
 </script>
 
-<section id="ulasim" class="section">
+<section id="ulasim">
   <h2>📍 Tuana Sitesi Konum ve Ulaşım Bilgileri</h2>
-
-  <style>
-    .accordion {
-      background-color: #f1f1f1;
-      color: #004466;
-      cursor: pointer;
-      padding: 12px;
-      width: 100%;
-      text-align: left;
-      border: none;
-      outline: none;
-      font-size: 16px;
-      transition: 0.3s;
-      margin-top: 10px;
-      border-radius: 5px;
-    }
-
-    .accordion:hover, .active {
-      background-color: #d9e9f2;
-    }
-
-    .panel {
-      padding: 0 20px;
-      display: none;
-      background-color: white;
-      overflow: hidden;
-      margin-bottom: 1rem;
-    }
-
-    .panel ul {
-      list-style-type: disc;
-      padding-left: 1.5rem;
-      margin-top: 1rem;
-      text-align: left;
-    }
-
-    .panel li {
-      margin: 8px 0;
-    }
-  </style>
 
   <button class="accordion">🚍 Ulaşım</button>
   <div class="panel">
     <ul>
       <li>Toplu Taşıma (Otobüs / Minibüs): <strong>50 m</strong></li>
       <li>Ana Yol: <strong>200 m</strong></li>
-      <li>Havaalanı (Bodrum-Milas): <strong>75 km</strong></li>
-      <li>Deniz Ulaşımı / Bodrum Limanı: <strong>110 km</strong></li>
-      <li>Deniz Ulaşımı / Marmaris Limanı: <strong>65 km</strong></li>
+      <li>Havaalanı: <strong>75 km (Bodrum-Milas)</strong></li>
+      <li>Deniz Ulaşımı – Bodrum Limanı: <strong>110 km</strong></li>
+      <li>Deniz Ulaşımı – Marmaris Limanı: <strong>65 km</strong></li>
     </ul>
   </div>
 
@@ -304,7 +304,7 @@ nav a:hover {
       <li>İlköğretim Okulu: <strong>500 m</strong></li>
       <li>Lise: <strong>3 km</strong></li>
       <li>Üniversite: <strong>7 km</strong></li>
-      <li>Sağlık Ocağı / Poliklinik: <strong>3 km</strong></li>
+      <li>Sağlık Ocağı: <strong>3 km</strong></li>
       <li>Hastane: <strong>3 km</strong></li>
     </ul>
   </div>
@@ -319,22 +319,8 @@ nav a:hover {
       <li>Kültür / Bilim Merkezi: <strong>3 km</strong></li>
     </ul>
   </div>
-
-  <script>
-    const acc = document.getElementsByClassName("accordion");
-    for (let i = 0; i < acc.length; i++) {
-      acc[i].addEventListener("click", function () {
-        this.classList.toggle("active");
-        const panel = this.nextElementSibling;
-        if (panel.style.display === "block") {
-          panel.style.display = "none";
-        } else {
-          panel.style.display = "block";
-        }
-      });
-    }
-  </script>
 </section>
+
 
 
            
@@ -789,5 +775,23 @@ function showSlide(n) {
       window.scrollTo({top: 0, behavior: 'smooth'});
     }
   </script>
+           <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const acc = document.querySelectorAll(".accordion");
+
+    acc.forEach(button => {
+      button.addEventListener("click", function () {
+        this.classList.toggle("active");
+        const panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+      });
+    });
+  });
+</script>
+
   </body>
 </html>
